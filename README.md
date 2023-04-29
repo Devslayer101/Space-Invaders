@@ -1,4 +1,4 @@
-# [Space-Invaders-v1.5](https://github.com/Devslayer101/Space-Invaders-v1.5/tree/main)
+# [Space-Invaders-v1.5](https://github.com/Devslayer101/Space-Invades-v1.5)
 
 by [Devslayer101](https://www.devinm.tk)
 
