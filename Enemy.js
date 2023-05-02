@@ -7,6 +7,8 @@ export default class Enemy{
 
         this.image = new Image();
         this.image.src = `images/enemy${imageNumber}.png`;
+        this.enemyN = imageNumber;
+        this.enemyhurt = 0;
     }
 
     draw(ctx){
@@ -29,5 +31,13 @@ export default class Enemy{
             else{
                 return false;
             }
+    }
+
+    reportNumber(){
+        return this.enemyN;
+    }
+
+    reportY(){
+        return this.y;
     }
 }

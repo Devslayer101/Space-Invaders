@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Invaders</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body onload="">
+    <div id="gameEssentials">
+        <h1>Star Invaders</h1>
+        <div id="xp">XP: 0000</div>
+        <canvas id="game"></canvas>
+        <script type="module" src="index.js"></script>
+        <script src="Xp.js"></script>
+        <script src="HighXp.js"></script>
+        <script src="musicHandler.js"></script>
+        <div id="divButtons">
+            <button type="button" id="Menu" onclick="change_page()">Back</button>
+            <button type="button" id="Restart" onclick="location.reload()">Restart</button>
+        </div>
+        <div id="AlienLeft">Invaders Left: 60</div>
+        <div id="speed"> Current Speed: 1</div>
+    </div>
+    
+
+    <script>
+        function change_page(){
+        HighScore();
+        window.location.href = "index.html";
+      }
+    </script> 
+</body>
+</html>

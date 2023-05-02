@@ -1,12 +1,17 @@
-canvas {
-    box-shadow: black 20px 10px 50px;
-}
 h1 {
     margin: 0px;
+    margin-left: 100px;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 2.9em;
     font-family: 'Helvetica';
 }
+
+#main-menu{
+    font-size: 2em;
+    margin-left: 170px;
+}
+
 body{
     display: flex;
     align-items: center;
@@ -19,4 +24,38 @@ body{
         rgb(97, 98, 99) 0%,
         rgba(0, 0, 0, 0) 100%
     );
+}
+
+#Xp{
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-family: 'Helvetica';
+}
+
+#menu{
+    border: 5px solid black;
+    align-content: center;
+    margin: 30px;
+    height: 500px;
+    width: 500px;
+    background-color: whitesmoke;
+}
+
+.Start{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 80%;
+    margin-left: 50px;
+    margin-top: 70px;
 }

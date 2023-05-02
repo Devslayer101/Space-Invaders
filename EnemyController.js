@@ -19,6 +19,7 @@ export default class EnemyController{
     yVelocity = 0;
     defaultXVelocity = 1;
     defaultYVelocity = 1;
+    MaxXVelocity = 20;
 
     //Timer Settings
     //Moving Down
@@ -28,6 +29,9 @@ export default class EnemyController{
     //Firing a Bullet
     fireBulletTimerDefault = 100;
     fireBulletTimer = this.fireBulletTimerDefault;
+    
+    AlienLeftDiv = document.getElementById('AlienLeft');
+    speedDiv = document.getElementById('speed');
 
     constructor(canvas, EnemyBulletController, playerBulletController){
         this.canvas = canvas;
@@ -35,7 +39,7 @@ export default class EnemyController{
         this.playerBulletController = playerBulletController;
 
         this.enemyDeathSound = new Audio("sounds/enemy-death.wav");
-        this.enemyDeathSound.volume = 0.5;
+        this.enemyDeathSound.volume = 0.1;
 
         this.createEnemies();
     }
@@ -57,6 +61,8 @@ export default class EnemyController{
             const enemyIndex = Math.floor(Math.random() * allEnemies.length);
             const enemy = allEnemies[enemyIndex];
             this.EnemyBulletController.shoot(enemy.x + enemy.width/2, enemy.y, -3);
+            this.AlienLeftDiv.innerHTML = "Invaders Left: " + allEnemies.length;
+            this.speedUp(allEnemies.length);
         }
     }
 
@@ -137,12 +143,19 @@ export default class EnemyController{
         this.enemyRows.forEach(enemyRow => {
             enemyRow.forEach((enemy, enemyIndex) => {
                 if(this.playerBulletController.collideWith(enemy)){
-                    //play Death sound
+                    enemy.enemyhurt += 1;
+
+                    if(enemy.enemyhurt >= enemy.reportNumber()){
+                        //play Death sound
                     this.enemyDeathSound.currentTime = 0;
                     this.enemyDeathSound.play()
 
                     //Deletes Enemy (Enemy Dies)
                     enemyRow.splice(enemyIndex, 1);
+
+                    //Xp increases
+                    XpOnDeath(enemy.reportNumber());
+                    }
                 }
             });
         });
@@ -153,4 +166,23 @@ export default class EnemyController{
     collideWith(sprite){
         return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
     }
+
+    //Speed up the enemies as the number gets lower
+    speedUp(NumberOfEnemies){
+        if(NumberOfEnemies > 60/this.MaxXVelocity){
+            this.defaultXVelocity = 60/NumberOfEnemies;;
+        } else if (this.xVelocity < this.MaxXVelocity){
+            this.defaultXVelocity = this.MaxXVelocity;
+        } else{
+            this.xVelocity +=1;
+        }
+        this.speedDiv.innerHTML = "Current Speed: " + parseInt(this.defaultXVelocity);
+    }
+
+    /*
+    returnEnemY(){
+        console.log(returnY());
+        return parseInt(this.enemy.returnY());
+    }
+    */
 }

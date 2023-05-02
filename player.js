@@ -5,6 +5,8 @@ export default class Player {
     leftPressed = false;
     shootPressed = false;
 
+    shotAt = false;
+
     constructor(canvas, velocity, bulletController){
         this.canvas = canvas;
         this.velocity = velocity;
@@ -18,7 +20,7 @@ export default class Player {
         this.width = 50;
         this.height = 48;
         this.image = new Image();
-        this.image.src = "images/player.png"
+        this.image.src = "images/player.png";
 
         // Listens For Webpage to say if there was a button press
         document.addEventListener("keydown", this.keydown);
@@ -31,7 +33,10 @@ export default class Player {
         }
         this.move();
         this.collideWall();
+        this.DeathLook(ctx, 4);
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if(this.shotAt) ctx.globalAlpha = 1;
+        this.shotAt = false;
     }
 
     // Player Controls - Checks If We Press Arrow Keys
@@ -79,5 +84,19 @@ export default class Player {
         if(this.x > this.canvas.width - this.width){
             this.x = this.canvas.width - this.width;
         }
+    }
+
+    DeathLook(ctx, times = 4){
+        ctx.globalAlpha = 1;
+        if(this.shotAt){
+            for(let i = 0; i < times; i++){
+                ctx.globalAlpha = 0.4;
+                ctx.globalAlpha = 1;
+            }
+            ctx.globalAlpha = 0.4;
+        }
+    }
+    playerShotAt(){
+        this.shotAt = true;
     }
 }

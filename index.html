@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Invaders</title>
+    <title>Main Menu</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Space Invaders</h1>
-    <canvas id="game"></canvas>
-    <script type="module" src="index.js"></script>
+<body onload="
+loadXp();
+gameMusic()">
+  <div id="menu">
+    <h1>Star Invaders</h1>
+    <h1 id="main-menu">Main Menu</h1>
+    <input type="button" value="Start Game" class="Start" onclick="change_page()"/>
+    <div id="Xp">XP: 0000</div>
+  </div>
+      <script>
+        function change_page(){
+        window.location.href = "start.html";
+      }
+    </script>  
+    <script src="Xp.js"></script>
+    <script src="HighXp.js"></script>
+    <script src="musicHandler.js"></script>
 </body>
 </html>
