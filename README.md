@@ -1,4 +1,4 @@
-# [Space-Invades-v1.5](https://github.com/Devslayer101/Space-Invades-v1.5)
+# [Star-Invaders](https://github.com/Devslayer101/Space-Invades-v1.5)
 
 by [Devslayer101](https://www.devinm.tk)
 
